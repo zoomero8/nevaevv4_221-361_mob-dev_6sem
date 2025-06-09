@@ -1,0 +1,61 @@
+﻿<Window x:Class="FractionTrainer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FractionTrainer"
+        mc:Ignorable="d"
+        Title="Тренажёр Дробей" 
+        Height="720" Width="400"
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource PrimaryBackgroundBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="5">
+            <ToggleButton x:Name="ThemeToggleButton" 
+              Style="{DynamicResource ThemeToggleButtonStyle}"
+              HorizontalAlignment="Right"
+              Checked="ThemeToggleButton_Checked"
+              Unchecked="ThemeToggleButton_Unchecked"/>
+        </Grid>
+
+        <TextBlock Grid.Row="1" 
+                   TextWrapping="Wrap" TextAlignment="Center"
+                   Margin="0,10,0,25"
+                   Style="{DynamicResource FractionDisplayText}">
+            Тренажёр<LineBreak/>Собери дробь
+        </TextBlock>
+
+        <StackPanel Grid.Row="2" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+
+            <TextBlock Text="Выберите режим:" Style="{DynamicResource ModernTitleText}"/>
+
+            <Button x:Name="LearningModeButton" Content="Собери дробь" 
+                    Width="220" Height="50" 
+                    Style="{DynamicResource ModernButton}" 
+                    Click="LearningModeButton_Click"/>
+
+            <Button x:Name="MultipleChoiceModeButton" Content="Выберите варианты" 
+                    Width="220" Height="50" 
+                    Style="{DynamicResource ModernButton}" 
+                    Click="MultipleChoiceModeButton_Click"/>
+
+            <Button x:Name="FindPairsModeButton" Content="Найдите пары" 
+                    Width="220" Height="50" 
+                    Style="{DynamicResource ModernButton}" 
+                    Click="FindPairsModeButton_Click"/>
+
+            <Button x:Name="TestModeButton" Content="Проверка знаний" 
+                    Width="220" Height="50" 
+                    Style="{DynamicResource ModernButton}" 
+                    Click="TestModeButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

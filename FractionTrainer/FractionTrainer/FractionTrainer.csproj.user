@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_LastSelectedProfileId>D:\VSProjectsKurs\FractionTrainer\FractionTrainer\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
+  </PropertyGroup>
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="LearningModeWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="FractionShapeVisualizer.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CustomMessageBoxWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MultipleChoiceFractionWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="FindPairsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="KnowledgeCheckWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AssembleFractionLevel.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="MultipleChoiceLevel.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="FindPairsLevel.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="LearningModeWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="FractionShapeVisualizer.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="CustomMessageBoxWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MultipleChoiceFractionWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="FindPairsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="KnowledgeCheckWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AssembleFractionLevel.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MultipleChoiceLevel.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="FindPairsLevel.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\Dark.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\SharedStyles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\Light.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>
