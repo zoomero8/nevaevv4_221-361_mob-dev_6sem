@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="ColorTrainer.Views.ExamView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             mc:Ignorable="d" d:DesignHeight="700" d:DesignWidth="400"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
+    <Grid>
+        <!-- Верхняя панель с жизнями и прогрессом -->
+        <Grid Height="50" VerticalAlignment="Top">
+            <TextBlock Text="Экзамен" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource PrimaryTextColor}"/>
+            <Button x:Name="BackButton" Margin="15,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource IconButton}" Click="BackButton_Click">
+                <Viewbox Height="15" Width="15">
+                    <Path Data="M10,0 L0,10 L10,20" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="3"/>
+                </Viewbox>
+            </Button>
+            <TextBlock x:Name="LivesText" Text="♥♥♥♥♥" FontSize="22" Foreground="Red" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0"/>
+        </Grid>
+
+        <!-- Контейнер для отображения текущего мини-уровня -->
+        <ContentControl x:Name="RoundContentControl" Margin="0,50,0,50"/>
+
+        <!-- Панель со счетом и рекордом снизу -->
+        <Grid VerticalAlignment="Bottom" Margin="10">
+            <!-- Кнопка рекорда слева -->
+            <Button x:Name="HighScoreButton" 
+            Content="🏆" 
+            Style="{StaticResource IconButton}"
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Center"
+            Click="HighScoreButton_Click"/>
+
+            <!-- Прогресс и счет по центру -->
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock x:Name="ProgressText" 
+                   Text="Раунд 1/15" 
+                   FontSize="18" 
+                   HorizontalAlignment="Center" 
+                   Foreground="{DynamicResource PrimaryTextColor}"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="Счет: " FontSize="18" FontWeight="Medium" Foreground="{DynamicResource PrimaryTextColor}"/>
+                    <TextBlock x:Name="ScoreText" Text="0" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource PrimaryTextColor}"/>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Пустой элемент справа, чтобы центрирование было идеальным -->
+            <!-- Мы делаем его такого же размера, как и кнопка рекордов -->
+            <FrameworkElement HorizontalAlignment="Right" Width="{Binding ActualWidth, ElementName=HighScoreButton}"/>
+        </Grid>
+    </Grid>
+</UserControl>

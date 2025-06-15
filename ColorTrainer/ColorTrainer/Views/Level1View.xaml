@@ -1,0 +1,105 @@
+﻿<UserControl x:Class="ColorTrainer.Views.Level1View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ColorTrainer.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Верхняя панель с правильной версткой -->
+        <Grid Grid.Row="0" VerticalAlignment="Center" Height="50">
+            <!-- Заголовок будет в основе, центрирован по всей ширине -->
+            <TextBlock x:Name="LevelTitleText" 
+               Text="Найди по названию" 
+               FontSize="24" FontWeight="Bold" 
+               HorizontalAlignment="Center" VerticalAlignment="Center"
+               Foreground="{DynamicResource PrimaryTextColor}"/>
+
+            <!-- Кнопка "Назад" накладывается сверху, выровнена по левому краю -->
+            <Button x:Name="BackButton" 
+            VerticalAlignment="Center" HorizontalAlignment="Left" 
+            Margin="15,0,0,0"
+            Click="BackButton_Click"
+            Style="{StaticResource IconButton}">
+                <Viewbox Width="15" Height="15">
+                    <Path Data="M10,0 L0,10 L10,20" 
+                  Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" 
+                  StrokeThickness="3"/>
+                </Viewbox>
+            </Button>
+        </Grid>
+
+        <!-- Панель с вопросом -->
+        <TextBlock x:Name="QuestionText" Grid.Row="1"
+                   Text="Какой это цвет?"
+                   FontSize="32" FontWeight="SemiBold"
+                   TextAlignment="Center" Margin="20,40,20,20"
+                   Foreground="{DynamicResource PrimaryTextColor}"/>
+
+        <!-- Панель с вариантами ответов -->
+        <ItemsControl x:Name="ColorOptionsItemsControl" Grid.Row="2" Margin="20">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="2" Rows="2"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Margin="10" 
+                            Background="{Binding Brush}" 
+                            Tag="{Binding}"
+                            Click="ColorOptionButton_Click"
+                            BorderBrush="{DynamicResource SecondaryTextColor}"
+                            BorderThickness="2"
+                            Cursor="Hand">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="15">
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <!-- Строка состояния с кнопкой "Проверить" -->
+        <StackPanel Grid.Row="3" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid Grid.Row="3" Margin="15,10,15,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <!-- Для кнопки рекорда -->
+                    <ColumnDefinition Width="*"/>
+                    <!-- Пустое пространство -->
+                    <ColumnDefinition Width="Auto"/>
+                    <!-- Для счета -->
+                </Grid.ColumnDefinitions>
+
+                <!-- Кнопка рекорда в левой колонке -->
+                <Button x:Name="HighScoreButton" 
+                    Grid.Column="0"
+                    Content="🏆" 
+                    Style="{StaticResource IconButton}"
+                    Click="HighScoreButton_Click" Margin="0,0,75,0"/>
+
+                <!-- Счет в правой колонке -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="Счет: " FontSize="18" FontWeight="Medium" Foreground="{DynamicResource PrimaryTextColor}"/>
+                    <TextBlock x:Name="ScoreText" Text="0" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource PrimaryTextColor}"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,111 @@
+﻿<UserControl x:Class="ColorTrainer.Views.Level4View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ColorTrainer.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="400">
+    <!-- Главный Grid, который содержит все -->
+    <Grid>
+        <!-- Этот Grid будет содержать основные элементы уровня -->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <!-- 0: Заголовок и кнопка "Назад" -->
+                <RowDefinition Height="*"/>
+                <!-- 1: Вся игровая область -->
+                <RowDefinition Height="Auto"/>
+                <!-- 2: Нижняя панель (счет и рекорд) -->
+            </Grid.RowDefinitions>
+
+            <!-- Верхняя панель -->
+            <Grid Grid.Row="0" VerticalAlignment="Center" Height="50" x:Name="TopPanel">
+                <TextBlock Text="Гармония Цвета" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource PrimaryTextColor}"/>
+                <Button x:Name="BackButton" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="15,0,0,0" Click="BackButton_Click" Style="{StaticResource IconButton}">
+                    <Viewbox Width="15" Height="15">
+                        <Path Data="M10,0 L0,10 L10,20" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="3"/>
+                    </Viewbox>
+                </Button>
+            </Grid>
+
+            <!-- Игровая область -->
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <!-- Вопрос -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Базовый цвет -->
+                    <RowDefinition Height="*"/>
+                    <!-- Варианты ответа -->
+                </Grid.RowDefinitions>
+
+                <!-- Панель с вопросом (теперь без кнопки) -->
+                <TextBlock x:Name="QuestionText" Grid.Row="0"
+                           Text="Найдите комплементарный цвет"
+                           FontSize="28" FontWeight="SemiBold"
+                           TextAlignment="Center" Margin="20,10,20,10"
+                           TextWrapping="Wrap" Foreground="{DynamicResource PrimaryTextColor}"/>
+
+                <!-- Базовый цвет -->
+                <Border x:Name="BaseColorBorder" Grid.Row="1" Width="150" Height="150" Margin="0,15" 
+                        CornerRadius="15" BorderThickness="2" BorderBrush="{DynamicResource SecondaryTextColor}"
+                        HorizontalAlignment="Center">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="2" Color="Black" Opacity="0.3" BlurRadius="10"/>
+                    </Border.Effect>
+                </Border>
+
+                <!-- Варианты ответа -->
+                <ItemsControl x:Name="ColorOptionsItemsControl" Grid.Row="2" Margin="20,0,20,20">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="2" Rows="2"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Margin="10" Background="{Binding Brush}" Tag="{Binding}"
+                                    Click="ColorOptionButton_Click" BorderBrush="{DynamicResource SecondaryTextColor}"
+                                    BorderThickness="2" Cursor="Hand">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderThickness="{TemplateBinding BorderThickness}"
+                                                CornerRadius="15"/>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+
+            <!-- Нижняя панель -->
+            <Grid Grid.Row="2" Margin="15,10" x:Name="BottomPanel">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="HighScoreButton" Grid.Column="0" Content="🏆" Style="{StaticResource IconButton}" Click="HighScoreButton_Click"/>
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="Счет: " FontSize="18" FontWeight="Medium" Foreground="{DynamicResource PrimaryTextColor}"/>
+                    <TextBlock x:Name="ScoreText" Text="0" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource PrimaryTextColor}"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+        <!-- КНОПКА ПОМОЩИ теперь лежит поверх всего и прижата к правому верхнему углу -->
+        <Button x:Name="HelpButton" 
+                Content="?" 
+                Style="{StaticResource IconButton}" 
+                FontSize="16" FontWeight="Bold"
+                Width="32" Height="32" 
+                Margin="0,15,15,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Click="HelpButton_Click"/>
+    </Grid>
+</UserControl>
