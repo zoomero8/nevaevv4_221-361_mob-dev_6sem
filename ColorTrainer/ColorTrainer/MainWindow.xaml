@@ -1,0 +1,36 @@
+﻿<Window x:Class="ColorTrainer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ColorTrainer"
+        xmlns:views="clr-namespace:ColorTrainer.Views"
+        mc:Ignorable="d"
+        Title="Цветовой тренажер" Height="750" Width="400"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="True" Background="Transparent"
+        MouseDown="Window_MouseDown"
+        Closing="MainWindow_Closing">
+
+    <Border x:Name="MainBorder" CornerRadius="20" Background="{DynamicResource PrimaryBackgroundColor}">
+        <Grid>
+            <Grid x:Name="MenuGrid">
+                <Button x:Name="ThemeToggleButton" Content="🎨" Style="{StaticResource IconButton}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15" Click="ThemeToggleButton_Click"/>
+                <Button x:Name="CloseButton" Content="✕" Style="{StaticResource IconButton}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="15" FontSize="16" FontWeight="Bold" Click="CloseButton_Click"/>
+
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Цветовой Тренажер" Foreground="{DynamicResource PrimaryTextColor}" FontSize="36" FontWeight="Bold" Margin="20,0,20,60" TextWrapping="Wrap" TextAlignment="Center"/>
+
+                    <Button x:Name="Level1Button" Content="Найти по названию" Style="{StaticResource MenuButton}" Click="Level1Button_Click"/>
+                    <Button x:Name="Level2Button" Content="Найти лишний" Style="{StaticResource MenuButton}" Click="Level2Button_Click"/>
+                    <Button x:Name="ColorMixerButton" Content="Мастерская колориста" Style="{StaticResource MenuButton}" Click="ColorMixerButton_Click"/>
+                    <Button x:Name="Level4Button" Content="Гармония Цвета" Style="{StaticResource MenuButton}" Click="Level4Button_Click"/>
+
+                    <Button x:Name="ExamButton" Content="Экзамен" Style="{StaticResource MenuButton}" Click="ExamButton_Click"/>
+                </StackPanel>
+            </Grid>
+
+            <ContentControl x:Name="GameContentControl" Visibility="Collapsed"/>
+        </Grid>
+    </Border>
+</Window>
