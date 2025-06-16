@@ -64,6 +64,7 @@ namespace ColorTrainer.Views
                     case 0: _roundSequence.Add(_level1); break;
                     case 1: _roundSequence.Add(_level2); break;
                     case 2: _roundSequence.Add(_level3); break;
+                    case 3: _roundSequence.Add(_level4); break;
                 }
             }
         }
